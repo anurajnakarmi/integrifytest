@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import './styles/App.css';
+import List from './components/List';
+import Moreinfo from './components/Moreinfo';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
+  const [data, setData] = useState('');
+  const [selectedData, setSelectedData] = useState(undefined);
+  
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then((response) => response.json())
+      .then((result) => setData(result))
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/" exact render={() => <List data={data} setSelectedData={setSelectedData} />} />
+        <Route path="/Details" render={() => <Moreinfo data={selectedData} />} />
+      </Switch>
+    </Router>
   );
 }
 

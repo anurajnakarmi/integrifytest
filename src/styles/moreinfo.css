@@ -1,0 +1,8 @@
+.moreinfo{
+    border: 1px solid black;
+     height: 500px;
+     width: 300px;
+     margin: 10px auto;
+    padding: 10px 70px;
+    background-color: lightgrey;
+}

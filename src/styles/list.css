@@ -1,0 +1,9 @@
+.listContainer{
+    display : flex;
+    flex-direction: row;
+    width : 70vw;
+    margin: 20px auto;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+}
